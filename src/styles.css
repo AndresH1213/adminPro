@@ -17,4 +17,31 @@
   border-radius: 5px;
 }
 
+.w100 {
+  width: 100px;
+}
+
+.avatar {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.w140 {
+  width: 140px;
+}
+
+.modal-image-background {
+  background-color: rgba(0,0,0,0.4);
+  height: 100%;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 9999;
+}
+
+.hidden{
+  display: none;
+}
+
 

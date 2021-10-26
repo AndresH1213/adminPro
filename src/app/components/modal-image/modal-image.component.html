@@ -1,0 +1,49 @@
+<div class="modal-image-background animated fadeIn fast"
+    [class.hidden]=modal.hiddenModal>
+    <div id="responsive-modal" 
+         class="modal fade show" 
+         tabindex="-1" role="dialog" 
+         aria-labelledby="myModalLabel" 
+         style="display: block; padding-right: 14px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Load Image</h4>
+                    <button type="button" 
+                            class="close"
+                            (click)="closeModal()" 
+                            data-dismiss="modal" 
+                            aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <h3>Seleccione una imagen</h3>
+                   <div class="text-center">
+                    <img *ngIf="!imgTemp" [src]="modal.img" class="img-avatar mb-2">
+                    <img  *ngIf="imgTemp" [src]="imgTemp" class="img-avatar mb-2">
+                </div>
+
+                <input type="file"
+                        (change)="changeImage($event.target)"
+                        >
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            (click)="closeModal()" 
+                            class="btn btn-default waves-effect" 
+                            data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" 
+                            class="btn btn-primary waves-effect waves-light"
+                            (click)="uploadImage()">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

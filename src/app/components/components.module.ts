@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 
 import { IncreasingComponent } from './increasing/increasing.component';
 import { DonughtComponent } from './donught/donught.component';
+import { ModalImageComponent } from './modal-image/modal-image.component';
 
 
 
 @NgModule({
   declarations: [
     IncreasingComponent,
-    DonughtComponent
+    DonughtComponent,
+    ModalImageComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { DonughtComponent } from './donught/donught.component';
   ],
   exports: [
     IncreasingComponent,
-    DonughtComponent
+    DonughtComponent,
+    ModalImageComponent
   ]
 })
 export class ComponentsModule { }
