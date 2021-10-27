@@ -3,7 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
-import { catchError, delay, map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { RegisterForm } from '../interfaces/register-form.interface';

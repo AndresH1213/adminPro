@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
@@ -67,7 +67,7 @@ export class UserComponent implements OnInit, OnDestroy {
     }
 
     // this.searchSV.search('users', term)
-    this.searchSV.search('users', term).subscribe((resp) => {
+    this.searchSV.search('users', term).subscribe((resp: any[]) => {
       this.users = resp;
     });
   }

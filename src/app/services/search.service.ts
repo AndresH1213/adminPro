@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Doctor } from '../models/doctor.model';
+import { Hospital } from '../models/hospital.model';
 import { User } from '../models/user.model';
 
 const base_url = environment.base_url;
@@ -31,6 +36,15 @@ export class SearchService {
     )
   }
 
+  private hospitalTransfor(results: any[]): Hospital[] {
+    return results
+  }
+
+  private doctorTransfor(results: any[]): Doctor[] {
+    return results
+  }
+
+
   search(
     type: 'users' | 'hospitals' | 'doctors',
     term: string
@@ -41,6 +55,11 @@ export class SearchService {
         switch (type) {
           case 'users':
             return this.userTransform( resp.results )
+          case 'hospitals':
+            return this.hospitalTransfor(resp.results)
+          case 'doctors':
+            return this.doctorTransfor(resp.results)
+          
 
           default:
             return [];
