@@ -33,7 +33,6 @@ export class PerfilComponent implements OnInit {
   }
 
   updateProfile() {
-    console.log(this.formProfile.value);
     this.userSV.updateProfile( this.formProfile.value )
           .subscribe(() => {
             const { name, email } = this.formProfile.value;

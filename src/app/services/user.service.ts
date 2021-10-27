@@ -37,6 +37,10 @@ export class UserService {
     return localStorage.getItem('token') || '';
   }
 
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+    return this.user.role!;
+  }
+
   get headers() {
     return {
       headers: {
@@ -51,7 +55,6 @@ export class UserService {
 
   googleInit() {
     return new Promise<void>(resolve => {
-      console.log('google init')
 
       gapi.load('auth2', () => {
         // Retrieve the singleton for the GoogleAuth library and set up the client.
@@ -64,8 +67,15 @@ export class UserService {
     })
   }
 
+  saveLocalStorage(token:string, menu: any) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(menu) );
+  }
+
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
+
     this.auth2.signOut().then( () => {
 
       // ngzona allows that thirdparty execute our own angular commands
@@ -93,7 +103,7 @@ export class UserService {
           uid
         } = data.user;
         this.user = new User(name, email, '', img, google, role, uid);
-        localStorage.setItem('token', data.token);
+        this.saveLocalStorage(data.token, data.menu)
 
         return true
       }),
@@ -106,7 +116,7 @@ export class UserService {
     return this.http.post(`${base_url}/users`, formData )
                     .pipe(
                       tap( (resp: any) => {
-                        localStorage.setItem('token', resp.token)
+                        this.saveLocalStorage(resp.token, resp.menu)
                       })
                     )
   }
@@ -126,7 +136,7 @@ export class UserService {
     return this.http.post(`${base_url}/login`, formData )
                     .pipe(
                       tap( (resp: any) => {
-                        localStorage.setItem('token', resp.token)
+                        this.saveLocalStorage(resp.token, resp.menu)
                       })
                     )
   }
@@ -136,7 +146,7 @@ export class UserService {
     return this.http.post(`${base_url}/login/google`, {token} )
                     .pipe(
                       tap( (resp: any) => {
-                        localStorage.setItem('token', resp.token)
+                        this.saveLocalStorage(resp.token, resp.menu)
                       })
                     )
   }

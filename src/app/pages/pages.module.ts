@@ -19,6 +19,7 @@ import { UserComponent } from './maintenance/user/user.component';
 import { HospitalComponent } from './maintenance/hospital/hospital.component';
 import { DoctorComponent } from './maintenance/doctor/doctor.component';
 import { DoctorComponentComponent } from './maintenance/doctor/doctor-component.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -35,7 +36,8 @@ import { DoctorComponentComponent } from './maintenance/doctor/doctor-component.
     UserComponent,
     HospitalComponent,
     DoctorComponent,
-    DoctorComponentComponent
+    DoctorComponentComponent,
+    SearchComponent
   ],
   exports: [
     DashboardComponent,

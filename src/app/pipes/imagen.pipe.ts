@@ -12,6 +12,7 @@ export class ImagenPipe implements PipeTransform {
       if (!img) {
         return `${base_url}/upload/users/no-image`;
     } else if (img?.includes('https')) {
+        console.log(img)
         return img;
     } else {
         return `${base_url}/upload/${type}/${img}`;
